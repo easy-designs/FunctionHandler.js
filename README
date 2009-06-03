@@ -1,0 +1,39 @@
+== FunctionHandler
+
+FunctionHandler allows you to assign functions, methods, etc. to run on a page based on the ID of the body element.
+
+== Current Version
+
+0.1 (2 April 2009)
+
+== Requirements
+
+None.
+
+== License
+
+FunctionHandler is distributed under the liberal MIT License.
+
+== Use
+
+To use, simply include FunctionHandler.js (found in ./src) or one of it's library-specific brethren and begin registering functions with it:
+
+FunctionHandler.register( 'home', function(){
+  alert('This function runs on a page where the body element has an id of "page"');
+});
+
+To register a function for every page, use the string '*':
+
+FunctionHandler.register( '*', function(){
+  alert('This function runs on every page');
+});
+
+To register a function for multiple pages, use an array:
+
+FunctionHandler.register( ['home','contact'], function(){
+  alert('This function runs on the home page and the contact page');
+});
+
+== How it works
+
+When the applicable body id is encountered, the function runs as soon as the DOM is ready.
