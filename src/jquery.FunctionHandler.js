@@ -2,7 +2,7 @@
 Function:       FunctionHandler()
 Author:         Aaron Gustafson (aaron at easy-designs dot net)
 Creation Date:  2009-04-02
-Version:        0.1
+Version:        0.2
 Homepage:       http://github.com/easy-designs/FunctionHandler.js
 License:        MIT License (see homepage)
 Note:           If you change or improve on this script, please let us know by
@@ -12,7 +12,7 @@ Note:           If you change or improve on this script, please let us know by
   
   var
   FunctionHandler = {
-    'version': '0.1'
+    'version': '0.2'
   },
   pages = {};
   
@@ -45,7 +45,7 @@ Note:           If you change or improve on this script, please let us know by
     
     // fail if we don't get the right stuff
     if ( ( typeof( id ) != 'string' &&
-           typeof( id ) != 'array' ) ||
+           ! ( id instanceof Array ) ) ||
          typeof( callback ) != 'function' )
     {
       return false;
@@ -54,14 +54,14 @@ Note:           If you change or improve on this script, please let us know by
     // create the page array if need be
     if ( typeof( id ) == 'string' &&
          id.indexOf( ', ' ) != -1 )
-         {
+    {
       id = id.split(', ');
     }
     
     // id is an array?
-    if ( typeof( id ) == 'array' )
+    if ( id instanceof Array )
     {
-      for ( var i=arr.length-1; i >= 0; i-- )
+      for ( var i=id.length-1; i >= 0; i-- )
       {
         add( id[i], callback );
       }
@@ -86,7 +86,7 @@ Note:           If you change or improve on this script, please let us know by
   
   function run( arr )
   {
-    if ( typeof( arr ) != 'object' )
+    if ( ! ( arr instanceof Array ) )
     {
       return;
     }
